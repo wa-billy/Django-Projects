@@ -8,5 +8,7 @@ urlpatterns = [
     path('', views.register),
     path('login/', views.login),
     path('todo/', views.todo),
-    path('logout/', views.logout, name='signout')
+    path('logout/', views.logout, name='signout'),
+    path('edit_todo/<int:srno>', views.edit_todo, name='edit_todo'),
+    path('delete_todo/<int:srno>', views.delete_todo)
 ]
