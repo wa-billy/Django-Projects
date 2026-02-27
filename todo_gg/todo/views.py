@@ -26,3 +26,12 @@ def todo_list(request):
             todo = get_object_or_404(Todo, id=task_id)
             todo.delete()
             return redirect("todo_list")
+        
+        if "clear_all" in request.POST:
+            Todo.objects.all().delete()
+            return redirect("todo_list")
+        
+    return render(request, "todo/list.html", {
+        "todos": todos,
+        "task_count": todos.count()
+    })

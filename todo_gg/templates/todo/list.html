@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Todo App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div class="todo-container">
+            <h2>Todo App</h2>
+
+            <!-- ADD TASK -->
+             <form method="POST">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" name="title" placeholder="Add your new todo" required>
+                    <button type="submit" name="add_task" class="add-btn">+</button>
+                </div>
+             </form>
+
+             <!-- TASK LIST -->
+              {% for todo in todos %}
+              <div class="task">
+
+                <!-- NORMAL TEXT -->
+                 <div id="text-{{ todo.id }}" class="task-text">
+                    {{ todo.title }}
+                 </div>
+
+                 <!-- EDIT MODE -->
+                  <form method="POST"
+                        id="edit-{{ todo.id }}"
+                        class="edit-form"
+                        style="display:none;">
+                    {% csrf_token %}
+                    <input type="hidden" name="task_id" value="{{ todo.id }}">
+                    <input type="text"
+                            name="new_title"
+                            value="{{ todo.title }}"
+                            class="edit-input"
+                            required>
+                    <button type="submit"
+                            name="edit_task"
+                            class="btn btn-save">
+                        O
+                    </button>
+                  </form>
+              </div>
+        </div>
+    </body>
+</html>
