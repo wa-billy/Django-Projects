@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Todo
 
+
 def todo_list(request):
     todos = Todo.objects.all()
 
@@ -31,7 +32,7 @@ def todo_list(request):
             Todo.objects.all().delete()
             return redirect("todo_list")
         
-    return render(request, "todo/list.html", {
+    return render(request, "list.html", {
         "todos": todos,
         "task_count": todos.count()
     })

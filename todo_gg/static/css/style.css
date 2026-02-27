@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../images/eebe8a73a7eed94dfc2a96ca4699e4b8.jpg) no-repeat center center/cover;
+}
+
