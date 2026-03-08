@@ -197,9 +197,9 @@ def forgotPassword(request):
     return render(request, 'accounts/forgotPassword.html')
 
 
-def resetpassword_validate(request, uid64, token):
+def resetpassword_validate(request, uidb64, token):
     try:
-        uid = urlsafe_base64_decode(uid64).decode()
+        uid = urlsafe_base64_decode(uidb64).decode()
         user = Account._default_manager.get(pk=uid)
     except(TypeError, ValueError, OverflowError, Account.DoesNotExist):
         user = None
